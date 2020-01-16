@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <p id="welcome-text">Welcome to {{page_title}} <i class="fas fa-seedling"></i>.</p>
+    <br>
+    <p id="intro-text">{{ section.settings.intro-text }}</p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Homepage Intro",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "intro-text",
+        "label": "Intro Text"
+      }
+    ]
+  }
+{% endschema %}

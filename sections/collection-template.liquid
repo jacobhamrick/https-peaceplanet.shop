@@ -1,0 +1,97 @@
+<section class="products section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="widget">
+          <h4 class="widget-title">Sort By</h4>
+        </div>
+
+        <div id="accordion">
+          {% for link in linklists[section.settings.category].links %}
+            {% if link.links != blank %}
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5>
+                    <a href="" class="{% if forloop.index != 1 %} collapsed {% endif %}" data-toggle="collapse" data-target="#collapse-{{link.title}}" aria-expanded="true" aria-controls="collapse-{{link.title}}">
+                      {{link.title}}
+                    </a>
+                  </h5>
+                </div>
+
+                <div id="collapse-{{link.title}}" class="collapse {% if forloop.first %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <ul class="list-unstyled">
+                      {% for childlink in link.links %}
+                      <li><a href="{{ childlink.url }}">{{childlink.title}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+             {% else %}
+
+            <div class="card">
+              <div class="card-header" id="heading-{{link.title}}">
+                <h5>
+                  <a href="{{link.url}}" class="no-icon">
+                    {{link.title}}
+                  </a>
+                </h5>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="row">
+          {% for product in collection.products %}
+            <div class="col-md-4">
+              <div class="product-item">
+                <div class="product-thumb">
+                  {% if product.compare_at_price and product.compare_at_price != product.price %}
+                  <span class="bage">Sale</span>
+                  {% endif %}
+
+                  <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x' }}">
+                  <div class="preview-meta">
+                    <ul>
+                      <li>
+                        <a href="{{product.url}}"><i class="fa fa-search"></i></a>
+                      </li>
+                      <li>
+                        <form id="form-{{ product.handle }}" method="post" action="/cart/add">
+                          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                          <a onclick="document.getElementById('form-{{ product.handle }}').submit()"><i class="fa fa-shopping-cart"></i></a>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="product-content">
+                  <h4><a href="{{product.url}}">{{product.title}}</a></h4>
+                  <p class="price">{{product.price | money }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Collection Page",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "category",
+        "label": "Collection Dropdown"
+      }
+    ]
+  }
+{% endschema %}
