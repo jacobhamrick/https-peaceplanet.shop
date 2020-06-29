@@ -1,37 +1,51 @@
-<div class="menu-button toggle-menu">
-        <div class="burger-box"><hr class="the-burger top-bun"><hr class="the-burger goods"><hr class="the-burger bottom-bun"></div>
-    </div>
-    <div class="menu flex">
-      <div id="menu-peace"><i class="fas fa-peace"></i></div>
-          {% for link in linklists[section.settings.main_linklist].links %}
-            {% if link.links == blank %}
-            <div class="nav-item active">
-              <a class="nav-link" href="{{link.url}}">{{link.title}}</a>
-            </div>
-            {% endif %}
+<section class="main-menu">
+  <div class="menu-button toggle-menu">
 
-            {% if link.links != blank %}
-            <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Shop
-              </a>
-              <div class="dropdown-menu full-width" aria-labelledby="navbarDropdown">
-                <div class="row">
-                  {% for childlink in link.links %}
-                  <div class="col-4">
-                    <div class="dropdown-header">{{childlink.title}}</div>
-                    <div class="dropdown-divider"></div>
+    <button class="hamburger hamburger--squeeze" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
 
-                     {% for sublink in childlink.links %}
-                      <a href="{{sublink.url}}">{{sublink.title}}</a>
-                    {% endfor %}
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          {% endif %}
-          {% endfor %}
 
   </div>
+
+  <div class="menu flex">
+    {% for link in linklists[section.settings.main_linklist].links %}
+
+
+      {% if link.links == blank %}
+      <div class="nav-item">
+        <a class="nav-link" href="{{link.url}}" {% if link.current %}aria-current="page" id="highlight"{% endif %}><p>{{link.title}}</p></a>
+      </div>
+      {% endif %}
+
+      {% if link.links != blank %}
+      <div class="nav-item dropdown position-relative">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% if link.current %}aria-current="page" id="highlight"{% endif %}>
+          <p>Shop</p>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="row">
+            {% for childlink in link.links %}
+            <div class="col-4">
+              <div class="dropdown-header">{{childlink.title}}</div>
+              <div class="dropdown-divider"></div>
+
+               {% for sublink in childlink.links %}
+                <a href="{{sublink.url}}">{{sublink.title}}</a>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+      {% endfor %}
+
+      <div id="menu-peace"> <img id="peace-star" src="{{ 'logo_01wht.png' | asset_url }}" /></div>
+
+  </div>
+
 </section>

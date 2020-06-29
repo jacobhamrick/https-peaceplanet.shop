@@ -3,9 +3,16 @@ jQuery(document).ready(function() {
     jQuery('.menu').toggleClass('openSesame');
     jQuery(this).toggleClass('active');
   });
+
   jQuery('.toggle').on('click', function(){
     jQuery('.menu-hide').removeClass('show');
     jQuery('.menu-tab').removeClass('active');
+  });
+
+  var $hamburger = jQuery(".hamburger");
+  $hamburger.on("click", function(e) {
+    $hamburger.toggleClass("is-active");
+    // Do something else, like open/close menu
   });
 });
 

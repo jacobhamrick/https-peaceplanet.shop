@@ -22,9 +22,14 @@
 
   {{ content_for_header }}
 
-  <link href="https://fonts.googleapis.com/css?family=Alice" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}" sizes="16x16">
+
+
   <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+
+
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
@@ -34,7 +39,9 @@
 
   <link rel="canonical" href="{{ canonical_url }}" />
   <meta name="viewport" content="width=device-width" />
+
   {{ 'style.css' | asset_url | stylesheet_tag }}
+  {{ 'hamburgers.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
 
@@ -46,10 +53,15 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+
+  {{ 'bootstrap.min.js' | asset_url | script_tag}}
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
   {{ 'theme.js' | asset_url | script_tag}}
 </body>
 </html>

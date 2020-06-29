@@ -1,33 +1,49 @@
-<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselIndicators" data-slide-to="0" class="active"><i class="fas fa-star"></i></li>
-    <li data-target="#carouselIndicators" data-slide-to="1" class=""><i class="fas fa-star"></i></li>
-    <li data-target="#carouselIndicators" data-slide-to="2" class=""><i class="fas fa-star"></i></li>
-    <li data-target="#carouselIndicators" data-slide-to="3" class=""><i class="fas fa-star"></i></li>
-  </ol>
-  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-    <i class="carousel-control-next-icon fas fa-moon"></i>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-    <i class="carousel-control-next-icon fas fa-sun"></i>
-    <span class="sr-only">Next</span>
-  </a>
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="background-image: url({{ section.settings.slide-1 | img_url: '800x' }});">
-      <img src="{{ section.settings.slide-1 | img_url: '800x' }}">
+<div class="homepage-viewer section">
+  <p class="title bold">VIEWER</p>
+  <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active" style="background-image: url({{ section.settings.slide-1 | img_url: '800x' }});">
+        <img src="{{ section.settings.slide-1 | img_url: '800x' }}">
+      </div>
+      <div class="carousel-item" style="background-image: url({{ section.settings.slide-2 | img_url: '800x' }});">
+        <img src="{{ section.settings.slide-2 | img_url: '800x' }}">
+      </div>
+      <div class="carousel-item" style="background-image: url({{ section.settings.slide-3 | img_url: '800x' }});">
+        <img src="{{ section.settings.slide-3 | img_url: '800x' }}">
+      </div>
+      <div class="carousel-item" style="background-image: url({{ section.settings.slide-4 | img_url: '800x' }});">
+        <img src="{{ section.settings.slide-4 | img_url: '800x' }}">
+      </div>
+
     </div>
-    <div class="carousel-item" style="background-image: url({{ section.settings.slide-2 | img_url: '800x' }});">
-      <img src="{{ section.settings.slide-2 | img_url: '800x' }}">
+
+    <div class="carousel-indicators-div">
+
+      <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <p>-</p>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <ol class="carousel-indicators">
+
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active">1</li>
+        <li data-target="#carouselIndicators" data-slide-to="1" class="">2</li>
+        <li data-target="#carouselIndicators" data-slide-to="2" class="">3</li>
+        <li data-target="#carouselIndicators" data-slide-to="3" class="">4</li>
+
+      </ol>
+
+      <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <p>+</p>
+        <span class="sr-only">Next</span>
+      </a>
+
     </div>
-    <div class="carousel-item" style="background-image: url({{ section.settings.slide-3 | img_url: '800x' }});">
-      <img src="{{ section.settings.slide-3 | img_url: '800x' }}">
-    </div>
-    <div class="carousel-item" style="background-image: url({{ section.settings.slide-4 | img_url: '800x' }});">
-      <img src="{{ section.settings.slide-4 | img_url: '800x' }}">
-    </div>
+
   </div>
 </div>
+
 
 {% schema %}
   {

@@ -1,45 +1,59 @@
 <section class="products section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="title text-center">
-          <h2>Featured Products</h2>
+
+  <p class="title bold"> {{ section.settings.title }} </p>
+
+
+
+
+    {% assign collection = collections[section.settings.collection] %}
+
+
+
+    <div class="homepage-products-div flex">
+      {% for product in collection.products limit: section.settings.product_limit %}
+
+      <div class="product-item">
+
+        <div class="product-thumb">
+
+          {% if product.compare_at_price and product.compare_at_price != product.price %}
+          <span class="bage">Sale</span>
+          {% endif %}
+          <a class="featured-product-img-link" href="{{product.url}}">
+            <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
+          </a>
+
         </div>
-      </div>
-      <!-- assign -> "collection" is just collection name, could be anyhting -->
-      {% assign collection = collections[section.settings.collection] %}
-      <div class="row">
-        {% for product in collection.product limit: section.setting.product_limit %}
-        <div class="col-md-4">
-          <div class="product-item">
-            <div class="product-thumb">
-              <!-- only show sale if compared price is not equal to product price -->
-              {% if product.compare_at_price and product.compare_at_price != product.price %}
-              <span class="bage">Sale</span>
-              {% endif  %}
-              <img class="img-responsive" src="{{product.featured_image.src | img_url: '600xo' }}" alt="product-img">
-              <div class="preview-meta">
-                <ul>
-                  <li>
-                    <a href="{{ product.url }}"><i class="fa fa-search"></i></a>
-                  </li>
-                  <li>
-                    <form id="form-{{ product.handle }}" method="post" action="/cart/add">
-                      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                      <a onclick="document.getElementById('form-{{ product.handle }}').submit()"><i class="fa fa-shopping-cart"></i></a>
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="product-content">
-              <h4><a href="{{product.url}}">{{product.title}}</a></h4>
-              <p class="price">{{product.price | money}}</p>
-            </div>
-            {% endfor %}
+
+
+        <div class="product-content flex">
+
+          <div class="feat-text-div flex">
+            <p class="feat-product-title"><a href="{{product.url}}">{{product.title}}</a></p>
+            <p class="feat-product-description">{{product.description}}</p>
+            {% unless product.available %}
+              <p class="price bold">Sold Out</p>
+            {% else %}
+              <p class="price bold">{{product.price | money}}</p>
+            {% endunless %}
           </div>
+
+          <ul class="product-buttons flex">
+            <li class="flex"><a href="{{product.url}}">VIEW</a></li>
+
+            <li class="flex">
+              <form id="form-{{product.handle}}" method="post" action="/cart/add">
+                <input type="hidden" name="id" value="{{product.variants.first.id}}">
+                <a onclick="document.getElementById('form-{{product.handle}}').submit()">BUY</a>
+              </form>
+            </li>
+          </ul>
+
         </div>
-      </div>
+
+      </div> <!-- end product-item -->
+      {% endfor %}
+    </div>
 
 </section>
 
@@ -62,7 +76,7 @@
         "type": "range",
         "id": "product_limit",
         "label": "Product Limit",
-        "min": 3,
+        "min": 1,
         "max": 9,
         "default": 6
       }
