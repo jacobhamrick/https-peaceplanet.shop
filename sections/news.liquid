@@ -1,0 +1,54 @@
+<div class="news flex">
+
+<p class="title font-weight-bold">{{ section.settings.news_title }} <i class="fas fa-globe"></i></p>
+
+  {% for block in section.blocks %}
+
+    <p class="news-date font-weight-bold">{{ block.settings.news_date}}</p>
+
+    <p class="news-text">{{ block.settings.news_text }}</p>
+
+  {% endfor %}
+
+
+</div>
+
+
+
+
+
+
+{% schema %}
+
+    {
+      "name": "News",
+      "settings": [
+      {
+        "type": "text",
+        "id": "news_title",
+        "label": "News Section Title"
+      }
+    ],
+
+    "blocks": [
+      {
+        "type": "text",
+        "name": "News Update",
+        "settings": [
+          {
+            "type": "text",
+            "id": "news_date",
+            "label": "News Date"
+          },
+          {
+            "type": "html",
+            "id": "news_text",
+            "label": "News Text"
+          }
+        ]
+      }
+    ]
+  }
+
+
+{% endschema %}

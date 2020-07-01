@@ -1,61 +1,59 @@
-<section class="products section">
 
-  <p class="title bold"> {{ section.settings.title }} </p>
-
+<p class="title font-weight-bold">{{ section.settings.title }} <i class="fas fa-star"></i></p>
 
 
 
-    {% assign collection = collections[section.settings.collection] %}
+
+  {% assign collection = collections[section.settings.collection] %}
 
 
 
-    <div class="homepage-products-div flex">
-      {% for product in collection.products limit: section.settings.product_limit %}
+  <div class="homepage-products-div flex">
+    {% for product in collection.products limit: section.settings.product_limit %}
 
-      <div class="product-item">
+    <div class="product-item">
 
-        <div class="product-thumb">
+      <div class="product-thumb">
 
-          {% if product.compare_at_price and product.compare_at_price != product.price %}
-          <span class="bage">Sale</span>
-          {% endif %}
-          <a class="featured-product-img-link" href="{{product.url}}">
-            <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
-          </a>
+        {% if product.compare_at_price and product.compare_at_price != product.price %}
+        <span class="bage">Sale</span>
+        {% endif %}
+        <a class="featured-product-img-link" href="{{product.url}}">
+          <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
+        </a>
 
+      </div>
+
+
+      <div class="product-content flex">
+
+        <div class="feat-text-div flex">
+          <p class="feat-product-title"><a href="{{product.url}}">{{product.title}}</a></p>
+          <p class="feat-product-description">{{product.description}}</p>
+          {% unless product.available %}
+            <p class="price bold">Sold Out</p>
+          {% else %}
+            <p class="price bold">{{product.price | money}}</p>
+          {% endunless %}
         </div>
 
+        <ul class="product-buttons flex">
+          <li class="flex"><a class="featured-product-img-link" href="{{product.url}}">VIEW</a></li>
 
-        <div class="product-content flex">
+          <li class="flex">
+            <form id="form-{{product.handle}}" method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{product.variants.first.id}}">
+              <a onclick="document.getElementById('form-{{product.handle}}').submit()">BUY</a>
+            </form>
+          </li>
+        </ul>
 
-          <div class="feat-text-div flex">
-            <p class="feat-product-title"><a href="{{product.url}}">{{product.title}}</a></p>
-            <p class="feat-product-description">{{product.description}}</p>
-            {% unless product.available %}
-              <p class="price bold">Sold Out</p>
-            {% else %}
-              <p class="price bold">{{product.price | money}}</p>
-            {% endunless %}
-          </div>
+      </div>
 
-          <ul class="product-buttons flex">
-            <li class="flex"><a href="{{product.url}}">VIEW</a></li>
+    </div> <!-- end product-item -->
+    {% endfor %}
+  </div>
 
-            <li class="flex">
-              <form id="form-{{product.handle}}" method="post" action="/cart/add">
-                <input type="hidden" name="id" value="{{product.variants.first.id}}">
-                <a onclick="document.getElementById('form-{{product.handle}}').submit()">BUY</a>
-              </form>
-            </li>
-          </ul>
-
-        </div>
-
-      </div> <!-- end product-item -->
-      {% endfor %}
-    </div>
-
-</section>
 
 {% schema %}
   {
@@ -65,7 +63,7 @@
         "type": "text",
         "id": "title",
         "label": "Heading",
-        "default": "Trending Products"
+        "default": "Featured Products"
       },
       {
         "type": "collection",

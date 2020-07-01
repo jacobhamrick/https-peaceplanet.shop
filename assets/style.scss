@@ -11,15 +11,16 @@ $background: #000;
 $background2: #9A6AB0;
 $page-padding: 12px;
 $time: 0.5s;
-$borders: 1.5px solid $main-color;
+$border-weight: 2px;
+$borders: $border-weight solid $green;
 $font-bold: 'nimbus_sans_lbold', sans-serif;
-$font-reg: sans-serif;
+$font-reg: 'nimbus_sans_lregular';
 $header-height: 100px;
-$footer-height: 60px;
+$footer-height: 200px;
 $rainbow: linear-gradient(to right, $red, $orange, $yellow, $green, $blue, $purple);
 $rainbow2: repeating-radial-gradient($red, $orange, $yellow, $green, $blue, $purple);
 $glow: 2px 2px 20px #fff;
-
+$scrollbar-width: $page-padding;
 
 
 /* Font Faces */
@@ -81,17 +82,19 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-    width: $page-padding;
+    width: $scrollbar-width;
+    height: $scrollbar-width;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    border-left: $borders;
+    background-color: $background;
+
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $main-color;
+    background: $green;
 }
 
 hr:not(.the-burger) {
@@ -112,7 +115,7 @@ h1, h2, h3, h4, h5 {
 }
 
 p {
-  font-family: $font-reg, sans-serif;
+  font-family: $font-reg;
   font-size: 16px;
   color: #fff;
   margin: 0 0 $page-padding 0;
@@ -132,16 +135,11 @@ a:hover {
   text-decoration: none;
 }
 
-.bold {
-  font-weight: bold;
-}
-
-
-
 /* Utility Classes */
 .flex {
   display: flex;
-  vertical-align: middle;
+  vertical-align
+  : middle;
   align-items: center;
 }
 
@@ -158,125 +156,118 @@ a:hover {
   -----------------------------------------------------------------------------
  ---------------------------------------------------------------------------- */
 
-
+.shopify-section {
+  padding: $page-padding calc(#{$page-padding} * 2);
+  width: 100%;
+  height: auto;
+}
 
 /* -----------------------------------------------------------------------------
                                        HEADER
  ---------------------------------------------------------------------------- */
 
-
 #shopify-section-header {
+
   z-index: 9000;
   position: sticky;
   height: $header-height;
   width: 100%;
   top: 0;
-  padding: 0;
   background-color: $background;
   border-bottom: $borders;
-}
 
-.top-header {
-  display: flex;
-  flex-direction: column;
-  vertical-align: middle;
-  height: 100%;
-  padding: $page-padding calc(#{$page-padding} * 3);
-}
-
-
-.top-menu {
-  width: 100%;
-  justify-content: flex-end;
-  font-size: 18px;
-  padding-bottom: $page-padding;
-  color: $main-color;
-  .fa {
+  .shopify-cart-login {
+    width: 100%;
+    justify-content: flex-end;
+    font-size: 18px;
+    padding-bottom: $page-padding;
     color: $main-color;
-    margin-right: calc(#{$page-padding} / 3)
+
+    a {
+      padding-right: $page-padding;
+    }
+
+    .fa {
+      color: $main-color;
+      margin-right: calc(#{$page-padding} / 3)
+    }
   }
-}
 
-.top-menu a {
-  padding-right: $page-padding;
-}
+  .logo-header {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
 
+    #logo-link {
+      -webkit-transition: background-image $time ease-in-out;
+      transition: background-image $time ease-in-out;
+      font-size: 30px;
+      background-image: $rainbow;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.logo {
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  #logo-link {
-    -webkit-transition: background-image $time ease-in-out;
-    transition: background-image $time ease-in-out;
-    font-size: 30px;
-    background-image: $rainbow;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
+    .menu-button {
+        z-index: 1000;
+        background-color: $background;
+        border: none;
+        margin-right: $page-padding;
+        border-radius: 0;
+        cursor: pointer;
+        float: right;
 
-.menu-button {
-    z-index: 1000;
-    background-color: $background;
-    border: none;
-    margin-right: $page-padding;
-    border-radius: 0;
-    cursor: pointer;
-    float: right;
+        .hamburger {
+          padding: 0;
+          margin: 0;
+          background-color: #000;
+          transition: all $time ease-in-out;
 
-    .hamburger {
-      padding: 0;
-      margin: 0;
-      background-color: #000;
-      transition: all $time ease-in-out;
+        .hamburger-box {
+          transition: $time ease-in-out;
+          .hamburger-inner::before {
+            background-color: $green;
+            transition: $time ease-in-out;
+          }
+          .hamburger-inner {
+            background-color: $blue;
+            transition: $time ease-in-out;
+          }
+          .hamburger-inner::after {
+            background-color: $purple;
+            transition: $time ease-in-out;
+          }
+        }
 
-    .hamburger-box {
-      transition: $time ease-in-out;
-      .hamburger-inner::before {
-        background-color: $green;
-        transition: $time ease-in-out;
+        .hamburger-box:hover {
+          .hamburger-inner::before {
+            background-color: $red;
+            transition: $time linear;
+            text-shadow: $glow;
+          }
+          .hamburger-inner {
+            background-color: $orange;
+            transition: $time ease-in-out;
+            text-shadow: $glow;
+          }
+          .hamburger-inner::after {
+            background-color: $yellow;
+            transition: $time ease-in-out;
+            text-shadow: $glow;
+          }
+        }
       }
-      .hamburger-inner {
+      .hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::before, .hamburger.is-active .hamburger-inner::after {
         background-color: $blue;
         transition: $time ease-in-out;
       }
-      .hamburger-inner::after {
-        background-color: $purple;
-        transition: $time ease-in-out;
-      }
+
     }
 
-    .hamburger-box:hover {
-      .hamburger-inner::before {
-        background-color: $red;
-        transition: $time linear;
-        text-shadow: $glow;
-      }
-      .hamburger-inner {
-        background-color: $orange;
-        transition: $time ease-in-out;
-        text-shadow: $glow;
-      }
-      .hamburger-inner::after {
-        background-color: $yellow;
-        transition: $time ease-in-out;
-        text-shadow: $glow;
-      }
-    }
-  }
-  .hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::before, .hamburger.is-active .hamburger-inner::after {
-    background-color: $blue;
-    transition: $time ease-in-out;
   }
 
 }
-
 
 /* ------------- TOGGLE MENU ------------- */
-.navbar {
-  display: block;
-}
 
 .menu {
   flex-direction: column;
@@ -357,37 +348,32 @@ a:hover {
                                SECTION: SHOP BODY
  ---------------------------------------------------------------------------- */
 
-
-#shopify-section-shop-body {
-  top: $header-height;
-  position: fixed;
+#shopify-section-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  bottom: 62px;
-  padding: calc(#{$page-padding} * 2);
-  height: calc(100% - (#{$header-height} + #{$footer-height}) );
   width: 100%;
   overflow-y: scroll;
+
 }
 
 /* -----------------------------------------------------------------------------
                                  PRODUCT CATEGORY
  ---------------------------------------------------------------------------- */
+
 .product-category {
   padding: $page-padding;
   .product-category-title {
     color: $main-color;
     font-size: 20px;
   }
-
 }
 
 /* -----------------------------------------------------------------------------
                                       HOMEPAGE
  ---------------------------------------------------------------------------- */
 
-div#shopify-section-homepage-text {
+#shopify-section-homepage-text {
   display: flex;
   flex-direction: column;
 }
@@ -396,7 +382,7 @@ div#shopify-section-homepage-text {
   flex-wrap: wrap;
 }
 
-.homepage-news {
+.news {
   flex-direction: column;
   align-items: flex-start;
 }
@@ -405,100 +391,108 @@ div#shopify-section-homepage-text {
 /* -----------------------------------------------------------------------------
                                  HOMEPAGE CAROUSEL
  ---------------------------------------------------------------------------- */
- $carouselWidth: 100%;
 
-#shopify-section-homepage-carousel {
-  margin: 0 0 $page-padding 0;
-}
-
-.carousel-inner {
-  height: 85vw;
-  width: $carouselWidth;
-  margin: 0 auto;
+#shopify-section-homepage-viewer {
   padding: 0;
-}
 
-.carousel-item {
-  border: $borders;
-  height: 100%;
-  background-size: cover;
-  background-position: 50% 50%;
-  img {
-    visibility: hidden;
-    border-radius: 100%;
-  }
-}
+  .homepage-viewer {
 
-.carousel-indicators-div {
-  border: $borders;
-  border-top: none;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 auto;
-  padding: $page-padding;
-  width: $carouselWidth;
-  height: 50px;
-  ol {
-    position: relative;
-    li {
-      border: none;
-      width: 30px;
-      background: none;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-      text-indent: 0;
-      color: $main-color;
-      opacity: 1;
-      margin: 0;
+    width: calc(100vw - #{$scrollbar-width});
+
+    .carousel-inner {
+      height: 85vw;
+      width: 100%;
+      margin: 0 auto;
       padding: 0;
     }
-  }
-}
 
-.carousel-indicators {
-  li.active {
-    color: $yellow;
-  }
-
-}
-
-
-.carousel-control-next:focus,
-.carousel-control-next:hover,
-.carousel-control-prev:focus,
-.carousel-control-prev:hover {
-    opacity: 1;
-    transition: $time all;
-    p {
-      color: $yellow;
+    .carousel-item {
+      border: $borders;
+      height: 100%;
+      background-size: cover;
+      background-position: 50% 50%;
+      img {
+        visibility: hidden;
+        border-radius: 100%;
+      }
     }
-}
+
+    .carousel-indicators-div {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
+      height: 50px;
+
+      ol {
+        position: relative;
+        margin: 0;
+
+        li {
+          height: 100%;
+          width: 30px;
+          background: none;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+          text-indent: 0;
+          color: $main-color;
+          opacity: 1;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    .carousel-indicators {
+      padding: 0;
+      li.active {
+        color: $yellow;
+      }
+    }
+
+    .carousel-control-next:focus,
+    .carousel-control-next:hover,
+    .carousel-control-prev:focus,
+    .carousel-control-prev:hover {
+        opacity: 1;
+        transition: $time all;
+        p {
+          color: $yellow;
+        }
+    }
 
 
 
-.carousel-control-next,
-.carousel-control-prev {
-  opacity: 1;
-  transition: $time all;
-  p {
-    font-size: 20px;
-    font-weight: bold;
-    color: $main-color;
-    margin-bottom: 0;
+    .carousel-control-next,
+    .carousel-control-prev {
+      opacity: 1;
+      transition: $time all;
+      p {
+        font-size: 20px;
+        font-weight: bold;
+        color: $main-color;
+        margin-bottom: 0;
+      }
+    }
+
   }
+
 }
 
-.carousel-control-next {
-  border-left: $borders;
-}
+/* -----------------------------------------------------------------------------
+                                  NEWS SECTION
+ ---------------------------------------------------------------------------- */
 
-.carousel-control-prev {
-  border-right: $borders;
+
+#shopify-section-news {
+
+  border-bottom: $borders;
+
 }
 
 
@@ -568,6 +562,7 @@ div#shopify-section-homepage-text {
           width: 80px;
           height: 38px;
           transition: all $time ease-in-out;
+          color: #fff;
           p,i,a {
             text-align: center;
             font-size: 13px;
@@ -597,14 +592,60 @@ div#shopify-section-homepage-text {
 ---------------------------------------------------------------------------- */
 
 #shopify-section-footer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   background-color: $background;
   width: 100%;
   height: $footer-height;
   border-top: $borders;
   bottom: 0;
-  position: fixed;
+  padding: calc(#{$page-padding} * 2) $page-padding;
+  footer {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 20px;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+    }
+    .social-media {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  p {
+    margin: 0;
+  }
 }
 
+
+.mailing-list-div {
+  .btn.btn-main {
+    color: $main-color;
+    border: $borders;
+    margin-left: $page-padding;
+    background-color: $background;
+  }
+
+  .btn:hover {
+    background-color: $red;
+    color: #000;
+    font-weight: bold;
+  }
+  .input-group.subscription-form {
+    .form-control {
+      font-size: 12px;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
 
 
 /* -----------------------------------------------------------------------------
@@ -618,15 +659,17 @@ div#shopify-section-homepage-text {
 
 @media (min-width: 600px) {
 
-  .section {
+  $footer-height: 120px;
+
+  .shopify-section {
     padding: $page-padding calc(#{$page-padding} * 3);
   }
 
-  #shopify-section-shop-body {
-    flex-direction: row;
+  #shopify-section-body {
     flex-wrap: wrap;
     padding: calc(#{$page-padding} * 2);
     overflow-y: hidden;
+    overflow-x: hidden;
     padding: 0;
   }
 
@@ -647,12 +690,11 @@ div#shopify-section-homepage-text {
       flex-wrap: nowrap;
       // justify-content: space-between;
       height: 100%;
-      width: 50%;
       overflow-y: scroll;
       .shopify-section {
         width: 100%;
         height: 100%;
-        .homepage-news {
+        .news {
           p {
 
           }
@@ -660,8 +702,16 @@ div#shopify-section-homepage-text {
       }
     }
 
-    .homepage-division:first-child {
+    #news-div {
       border-right: $borders;
+      width: 35%;
+    }
+
+    #featpro-div {
+      width: 65%;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      height: calc(100vh - ( #{$header-height + $footer-height}))
     }
 
     #viewer-plus-news-div {
@@ -702,23 +752,35 @@ div#shopify-section-homepage-text {
   /* ---------------------------------------------------------------------------
                                    HOMEPAGE PRODUCTS
    -------------------------------------------------------------------------- */
+   #shopify-section-homepage-products::-webkit-scrollbar-track {
+       border-left: none;
+       border-top: $borders;
+   }
+
   #shopify-section-homepage-products {
+
     .img-responsive {
       width: 100%;
     }
       .homepage-products-div {
-        // justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
         align-content: flex-start;
+        min-width: 50vw;
+        .title {
+          position: absolute;
+        }
         .product-item {
           height: auto;
           width: 30vw;
-          margin: $page-padding;
+          max-width: 320px;
+          margin-bottom: calc(#{$page-padding} * 3);
           .product-thumb {
           }
           .product-content {
             flex-direction: column;
             .feat-text-div {
-              flex-direction: column;
+              flex-direction: row;
               justify-content: space-between;
               align-items: flex-start;
               width: 100%;
@@ -756,33 +818,56 @@ div#shopify-section-homepage-text {
                   text-align: center;
                   font-size: 13px;
                   font-weight: bold;
+                  color: #fff;
                 }
               }
               li:hover {
                 background-color: $orange;
                 transition: all $time ease-in-out;
-                p,i,a {
-                  color: #fff;
-                }
+                color: #fff;
+
               }
               li:nth-child(2):hover {
-                background-color: $purple;
+                background-color: $green;
               }
 
             } //product-buttons
         } //product-content
       } //product-item
-      .product-item:first-child {
-        margin-left: 0;
-      }
-      .product-item:last-child {
-        margin-right: 0;
-      }
     } // homepage-prducts-div
   } //section
 
+/* -----------------------------------------------------------------------------
+                                      FOOTER
+---------------------------------------------------------------------------- */
+
+
+#shopify-section-footer {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(#{$page-padding});
+  position: fixed;
+  height: $footer-height;
+  footer {
+
+      flex-direction: row;
+      justify-content: space-between;
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 33%;
+      }
+      .social-media {
+        font-size: 20px;
+      }
+  }
+}
+
 .mailing-list-div {
-  margin: calc(#{$page-padding} * 2) 0 calc(#{$page-padding} * 3) 0;
+  margin: 0;
+  width: 60%;
   .btn.btn-main {
     color: $main-color;
     border: $borders;
@@ -795,7 +880,5 @@ div#shopify-section-homepage-text {
     }
   }
 }
-
-
 
 } // end media

@@ -1,0 +1,23 @@
+<div class="homepage-text-div flex">
+  <p class="title bold">{{ section.settings.recent-title }}</p>
+  <p>{{ section.settings.recent-text }}</p>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Homepage Recent",
+    "settings": [
+      {
+        "type": "text",
+        "id": "recent-title",
+        "label": "Recent Title"
+      },
+      {
+        "type": "html",
+        "id": "recent-text",
+        "label": "Recent Text"
+      }
+    ]
+  }
+{% endschema %}

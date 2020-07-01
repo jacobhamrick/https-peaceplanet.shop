@@ -45,10 +45,18 @@
 </head>
 <body>
 
-
+  <!-- Header -->
   {% section 'header' %}
-  {{ content_for_layout }}
-  {% section 'footer' %}
+
+  <div id="shopify-section-body" class="flex">
+    
+    <!-- Body -->
+    {{ content_for_layout }}
+
+    <!-- Footer -->
+    {% section 'footer' %}
+
+  </div>
 
 
 

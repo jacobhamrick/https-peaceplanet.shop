@@ -1,5 +1,5 @@
-<div class="homepage-viewer section">
-  <p class="title bold">VIEWER</p>
+<div class="homepage-viewer">
+
   <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
 
@@ -15,8 +15,8 @@
       <div class="carousel-item" style="background-image: url({{ section.settings.slide-4 | img_url: '800x' }});">
         <img src="{{ section.settings.slide-4 | img_url: '800x' }}">
       </div>
-
     </div>
+
 
     <div class="carousel-indicators-div">
 
@@ -47,7 +47,7 @@
 
 {% schema %}
   {
-    "name": "Homepage Carousel",
+    "name": "Homepage Viewer",
     "settings": [
       {
         "type": "image_picker",

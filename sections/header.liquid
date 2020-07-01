@@ -1,28 +1,10 @@
-<section class="top-header flex">
-  <!-- Top Menu -->
-  <div class="top-menu flex">
-    <a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a>
-      {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-          <a href="/account">/accountlogin.html"><i class="fa fa-user"></i>Your Account</a>
-          <a href="/account">/accountlogin.html"><i class="fa fa-user"></i>Sign Out</a>
-        {% else %}
-          <a href="/account/login"><i class="fa fa-sign-in"></i>Login</a>
-        {% endif %}
-      {% endif %}
-  </div><!-- end Top Menu -->
-  <!-- Site Logo -->
-  <div class="logo flex">
-    <a id="logo-link" href="https://peaceplanet.shop">PEACE PLANET</a>
-    <div>
-      {% include 'menu' %}
-    </div>
-  </div>
+{% include 'shopify-cart-login' %}
 
-</section>
+{% include 'header-logo' %}
 
 
 {% schema %}
+
  {
    "name" : "Main Menu",
    "settings" : [
