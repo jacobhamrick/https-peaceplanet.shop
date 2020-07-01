@@ -1,0 +1,12 @@
+<!-- Shopify Cart Login -->
+<div class="shopify-cart-login flex">
+  <a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a>
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <a href="/account">/accountlogin.html"><i class="fa fa-user"></i>Your Account</a>
+        <a href="/account">/accountlogin.html"><i class="fa fa-user"></i>Sign Out</a>
+      {% else %}
+        <a href="/account/login"><i class="fa fa-sign-in"></i>Login</a>
+      {% endif %}
+    {% endif %}
+</div>
