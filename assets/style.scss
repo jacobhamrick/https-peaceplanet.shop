@@ -1,20 +1,18 @@
 
 
-$main-color: #fff;
+$main-color: #000;
 $red: #dc2824;
 $orange: #f57e20;
 $yellow: #ffba00;
 $green: #9dcb3b;
 $blue: #45b2e6;
 $purple:  #895fa6;
-$background: #000;
-$background2: #9A6AB0;
+$background: #fff;
 $page-padding: 12px;
 $time: 0.5s;
 $border-weight: 2px;
-$borders: $border-weight solid $green;
-$font-bold: 'nimbus_sans_lbold', sans-serif;
-$font-reg: 'nimbus_sans_lregular';
+$borders: $border-weight solid $main-color;
+$font-reg: 'Rubik', sans-serif;;
 $header-height: 100px;
 $footer-height: 200px;
 $rainbow: linear-gradient(to right, $red, $orange, $yellow, $green, $blue, $purple);
@@ -23,36 +21,11 @@ $glow: 2px 2px 20px #fff;
 $scrollbar-width: $page-padding;
 
 
-/* Font Faces */
-
 @font-face {
-    font-family: 'nimbus_sans_lbold';
-    src: url('nimbus-sans-l_bold-webfont.woff2') format('woff2'),
-         url('nimbus-sans-l_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'nimbus_sans_lregular';
-    src: url('nimbus-sans-l_regular-webfont.woff2') format('woff2'),
-         url('nimbus-sans-l_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'blackletter';
-    src: url('blackletter-webfont.woff2') format('woff2'),
-         url('blackletter-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-
-
+  font-family: 'blackletter';
+  src: url("blackletter-webfont.woff2") format("woff2"), url("blackletter-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
 /* Main Styles */
 
@@ -74,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: $background;
   font-family: $font-reg, sans-serif;
-  overflow: hidden;
+  overflow: auto;
   height: 100%;
 }
 
@@ -84,6 +57,7 @@ body {
 ::-webkit-scrollbar {
     width: $scrollbar-width;
     height: $scrollbar-width;
+    border: $borders;
 }
 
 /* Track */
@@ -95,6 +69,7 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: $green;
+
 }
 
 hr:not(.the-burger) {
@@ -110,22 +85,22 @@ hr:not(.the-burger) {
 
 h1, h2, h3, h4, h5 {
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
   color: $main-color;
 }
 
 p {
   font-family: $font-reg;
   font-size: 16px;
-  color: #fff;
-  margin: 0 0 $page-padding 0;
+  color: $main-color;
+  margin: 0;
   opacity: 1
 }
 
 a {
   color: $main-color;
   transition: $time ease-in-out;
-  font-family: $font-bold, sans-serif;
+  font-family: $font-reg;
   opacity: 1
 }
 
@@ -147,7 +122,10 @@ a:hover {
   margin: 0 auto;
 }
 
-
+.title {
+  margin-bottom: $page-padding;
+  font-weight: bold;
+}
 /* -----------------------------------------------------------------------------
    -----------------------------------------------------------------------------
 
@@ -199,6 +177,8 @@ a:hover {
     justify-content: space-between;
 
     #logo-link {
+      font-family: $font-reg;
+      font-weight: 700;
       -webkit-transition: background-image $time ease-in-out;
       transition: background-image $time ease-in-out;
       font-size: 30px;
@@ -219,7 +199,7 @@ a:hover {
         .hamburger {
           padding: 0;
           margin: 0;
-          background-color: #000;
+          background-color: $background;
           transition: all $time ease-in-out;
 
         .hamburger-box {
@@ -276,7 +256,7 @@ a:hover {
   font-size: 3em;
   background-image: $rainbow2;
   padding: $page-padding;
-  color: #fff;
+  color: $main-color;
   display: none;
   top: $header-height;
   z-index: 100;
@@ -382,11 +362,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.news {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 
 /* -----------------------------------------------------------------------------
                                  HOMEPAGE CAROUSEL
@@ -490,8 +465,15 @@ a:hover {
 
 
 #shopify-section-news {
-
   border-bottom: $borders;
+  .news {
+    flex-direction: column;
+    align-items: flex-start;
+    .news-text {
+      margin-bottom: $page-padding;
+    }
+  }
+
 
 }
 
@@ -507,8 +489,6 @@ a:hover {
     flex-direction: column;
     .product-item {
       display: block;
-      border: $borders;
-      padding: calc(#{$page-padding} * 1.5);
       margin-bottom: $page-padding;
       transition: all $time ease-in-out;
         .product-thumb {
@@ -562,7 +542,7 @@ a:hover {
           width: 80px;
           height: 38px;
           transition: all $time ease-in-out;
-          color: #fff;
+          color: $main-color;
           p,i,a {
             text-align: center;
             font-size: 13px;
@@ -573,7 +553,7 @@ a:hover {
           background-color: $orange;
           transition: all $time ease-in-out;
           p,i,a {
-            color: #fff;
+            color: $main-color;
           }
         }
         li:nth-child(2):hover {
@@ -625,6 +605,7 @@ a:hover {
 
 
 .mailing-list-div {
+    width: 100%;
   .btn.btn-main {
     color: $main-color;
     border: $borders;
@@ -635,7 +616,6 @@ a:hover {
   .btn:hover {
     background-color: $red;
     color: #000;
-    font-weight: bold;
   }
   .input-group.subscription-form {
     .form-control {
@@ -659,7 +639,7 @@ a:hover {
 
 @media (min-width: 600px) {
 
-  $footer-height: 120px;
+  $footer-height: 60px;
 
   .shopify-section {
     padding: $page-padding calc(#{$page-padding} * 3);
@@ -674,14 +654,14 @@ a:hover {
   }
 
   #logo-link {
-    transform: scale(2.5, 3) translate(67px, -7px);
+    transform: scale(1.75, 2.5) translate(47.5px, -7px);
   }
 
   /* ---------------------------------------------------------------------------
                                      HOMEPAGE TEXT
    -------------------------------------------------------------------------- */
 
-  div#shopify-section-homepage-text {
+  #shopify-section-homepage-text {
     flex-direction: row;
   }
 
@@ -691,28 +671,13 @@ a:hover {
       // justify-content: space-between;
       height: 100%;
       overflow-y: scroll;
+
       .shopify-section {
         width: 100%;
         height: 100%;
-        .news {
-          p {
-
-          }
-        }
       }
     }
 
-    #news-div {
-      border-right: $borders;
-      width: 35%;
-    }
-
-    #featpro-div {
-      width: 65%;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      height: calc(100vh - ( #{$header-height + $footer-height}))
-    }
 
     #viewer-plus-news-div {
       flex-direction: column;
@@ -747,95 +712,129 @@ a:hover {
       flex-direction: column;
     }
 
+/* -----------------------------------------------------------------------------
+                                  NEWS SECTION
+ ---------------------------------------------------------------------------- */
+  #shopify-section-news {
+    border-bottom: none;
+  }
+
+
+    #news-div.homepage-division {
+      border-bottom: none;
+      border-right: $borders;
+      width: 35%;
+      height: calc(100vh - ( #{$header-height + $footer-height}));
+      overflow-y: scroll;
+    }
+
 
 
   /* ---------------------------------------------------------------------------
                                    HOMEPAGE PRODUCTS
    -------------------------------------------------------------------------- */
-   #shopify-section-homepage-products::-webkit-scrollbar-track {
-       border-left: none;
-       border-top: $borders;
-   }
+
+
+  #featpro-div.homepage-division {
+    width: 65%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: calc(100vh - ( #{$header-height + $footer-height}));
+  }
 
   #shopify-section-homepage-products {
 
-    .img-responsive {
-      width: 100%;
-    }
-      .homepage-products-div {
+    height: calc(100vh - ( #{$header-height + $footer-height}));
+
+
+  .img-responsive {
+    width: 100%;
+  }
+
+  .homepage-products-div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    min-width: 68vw;
+    height: 90%;
+
+    .product-item {
+      height: auto;
+      width: 30vw;
+      max-width: 320px;
+      margin: 0 calc(#{$page-padding} * 3) 0 0;
+
+      .product-thumb {
+        margin-bottom: $page-padding;
+      }
+
+      .product-content {
+        flex-direction: column;
+
+        .feat-text-div {
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 100%;
+
+            .feat-product-title {
+              margin-right: auto;
+              margin-bottom: 0;
+              text-transform: uppercase;
+            }
+
+            .feat-product-description,
+            .price {
+              margin-bottom: 0;
+              text-align: left;
+              font-size: 14px;
+            }
+        } // feat-text-div
+
+      .product-buttons {
+        margin: 0;
+        padding: 0;
+        list-style: none;
         flex-direction: row;
-        justify-content: space-between;
-        align-content: flex-start;
-        min-width: 50vw;
-        .title {
-          position: absolute;
-        }
-        .product-item {
-          height: auto;
-          width: 30vw;
-          max-width: 320px;
-          margin-bottom: calc(#{$page-padding} * 3);
-          .product-thumb {
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+
+          li {
+            justify-content: center;
+            margin: 0 0 0 calc(#{$page-padding} * 2);
+            border: $borders;
+            border-radius: 20px;
+            line-height: 38px;
+            width: 80px;
+            height: 38px;
+            transition: all $time ease-in-out;
+
+            p,i,a {
+              text-align: center;
+              font-size: 13px;
+              font-weight: bold;
+              color: $main-color;
+            }
+
           }
-          .product-content {
-            flex-direction: column;
-            .feat-text-div {
-              flex-direction: row;
-              justify-content: space-between;
-              align-items: flex-start;
-              width: 100%;
-                .feat-product-title {
-                  margin-right: auto;
-                  margin-bottom: 0;
-                  text-transform: uppercase;
-                }
-                .feat-product-description,
-                .price {
-                  margin-bottom: 0;
-                  text-align: left;
-                  font-size: 14px;
-                }
-            } // feat-text-div
 
-          .product-buttons {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-              li {
-                justify-content: center;
-                margin: 0 0 0 calc(#{$page-padding} * 2);
-                border: $borders;
-                border-radius: 20px;
-                line-height: 38px;
-                width: 80px;
-                height: 38px;
-                transition: all $time ease-in-out;
-                p,i,a {
-                  text-align: center;
-                  font-size: 13px;
-                  font-weight: bold;
-                  color: #fff;
-                }
-              }
-              li:hover {
-                background-color: $orange;
-                transition: all $time ease-in-out;
-                color: #fff;
+          li:hover {
+            background-color: $orange;
+            transition: all $time ease-in-out;
+            color: $main-color;
 
-              }
-              li:nth-child(2):hover {
-                background-color: $green;
-              }
+          }
 
-            } //product-buttons
-        } //product-content
-      } //product-item
-    } // homepage-prducts-div
-  } //section
+          li:nth-child(2):hover {
+            background-color: $green;
+          }
+
+        } //product-buttons
+      } //product-content
+    } //product-item
+  } // homepage-prducts-div
+} //section
 
 /* -----------------------------------------------------------------------------
                                       FOOTER
@@ -861,22 +860,24 @@ a:hover {
       }
       .social-media {
         font-size: 20px;
+        width: 100px;
       }
   }
 }
 
 .mailing-list-div {
   margin: 0;
-  width: 60%;
+
   .btn.btn-main {
     color: $main-color;
     border: $borders;
     margin-left: $page-padding;
   }
   .input-group.subscription-form {
-    width: 66%;
+    width: 100%;
     .form-control {
       font-size: 12px;
+
     }
   }
 }

@@ -28,12 +28,12 @@
       <div class="product-content flex">
 
         <div class="feat-text-div flex">
-          <p class="feat-product-title"><a href="{{product.url}}">{{product.title}}</a></p>
+          <p class="feat-product-title font-weight-bold"><a href="{{product.url}}">{{product.title}}</a></p>
           <p class="feat-product-description">{{product.description}}</p>
           {% unless product.available %}
-            <p class="price bold">Sold Out</p>
+            <p class="price font-weight-bold">Sold Out</p>
           {% else %}
-            <p class="price bold">{{product.price | money}}</p>
+            <p class="price font-weight-bold">{{product.price | money}}</p>
           {% endunless %}
         </div>
 

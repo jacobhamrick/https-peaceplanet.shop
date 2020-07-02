@@ -40,6 +40,9 @@
   <link rel="canonical" href="{{ canonical_url }}" />
   <meta name="viewport" content="width=device-width" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+
   {{ 'style.css' | asset_url | stylesheet_tag }}
   {{ 'hamburgers.css' | asset_url | stylesheet_tag }}
 </head>
@@ -49,7 +52,7 @@
   {% section 'header' %}
 
   <div id="shopify-section-body" class="flex">
-    
+
     <!-- Body -->
     {{ content_for_layout }}
 
