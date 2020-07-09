@@ -20,7 +20,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: #fff;
-  font-family: "Rubik", sans-serif, sans-serif;
+  font-family: "Jaldi", sans-serif, sans-serif;
   overflow: auto;
   height: 100%; }
 
@@ -28,8 +28,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 12px;
-  height: 12px;
-  border: 2px solid #000; }
+  height: 12px; }
 
 /* Track */
 ::-webkit-scrollbar-track {
@@ -39,32 +38,37 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #9dcb3b; }
 
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-left: 2px solid #000; }
+
 hr:not(.the-burger) {
   border-top: 4px #000 solid;
   margin: calc(12px/ 2) 0; }
 
-/* Type */
+/* Typogrophy */
 h1, h2, h3, h4, h5 {
   text-align: center;
   font-weight: 500;
   color: #000; }
 
 p {
-  font-family: "Rubik", sans-serif;
+  font-family: "Jaldi", sans-serif;
   font-size: 16px;
+  line-height: 1.15;
   color: #000;
   margin: 0;
   opacity: 1; }
 
 a {
   color: #000;
-  transition: 0.5s ease-in-out;
-  font-family: "Rubik", sans-serif;
+  transition: 0.5s ease-in-out ease-in-out;
+  font-family: "Jaldi", sans-serif;
   opacity: 1; }
 
 a:hover {
   color: #9dcb3b;
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out ease-in-out;
   text-decoration: none; }
 
 /* Utility Classes */
@@ -73,12 +77,10 @@ a:hover {
   vertical-align: middle;
   align-items: center; }
 
-.row {
-  margin: 0 auto; }
-
 .title {
-  margin-bottom: 12px;
-  font-weight: bold; }
+  margin-bottom: calc(12px * 1.5);
+  font-weight: bold;
+  font-size: 20px; }
 
 /* -----------------------------------------------------------------------------
    -----------------------------------------------------------------------------
@@ -88,7 +90,7 @@ a:hover {
   -----------------------------------------------------------------------------
  ---------------------------------------------------------------------------- */
 .shopify-section {
-  padding: 12px calc(12px * 2);
+  padding: calc(12px * 2);
   width: 100%;
   height: auto; }
 
@@ -96,18 +98,18 @@ a:hover {
                                        HEADER
  ---------------------------------------------------------------------------- */
 #shopify-section-header {
+  background-color: #fff;
+  border-bottom: 2px solid #000;
   z-index: 9000;
   position: sticky;
   height: 100px;
   width: 100%;
   top: 0;
-  background-color: #fff;
-  border-bottom: 2px solid #000; }
+  padding: 12px calc(12px * 2); }
   #shopify-section-header .shopify-cart-login {
     width: 100%;
     justify-content: flex-end;
-    font-size: 18px;
-    padding-bottom: 12px;
+    margin-bottom: 12px;
     color: #000; }
     #shopify-section-header .shopify-cart-login a {
       padding-right: 12px; }
@@ -119,10 +121,10 @@ a:hover {
     flex-direction: row;
     justify-content: space-between; }
     #shopify-section-header .logo-header #logo-link {
-      font-family: "Rubik", sans-serif;
+      font-family: "Jaldi", sans-serif;
       font-weight: 700;
-      -webkit-transition: background-image 0.5s ease-in-out;
-      transition: background-image 0.5s ease-in-out;
+      -webkit-transition: background-image 0.5s ease-in-out ease-in-out;
+      transition: background-image 0.5s ease-in-out ease-in-out;
       font-size: 30px;
       background-image: linear-gradient(to right, #dc2824, #f57e20, #ffba00, #9dcb3b, #45b2e6, #895fa6);
       -webkit-background-clip: text;
@@ -139,55 +141,57 @@ a:hover {
         padding: 0;
         margin: 0;
         background-color: #fff;
-        transition: all 0.5s ease-in-out; }
+        transition: all 0.5s ease-in-out ease-in-out; }
         #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box {
-          transition: 0.5s ease-in-out; }
+          transition: 0.5s ease-in-out ease-in-out; }
           #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box .hamburger-inner::before {
             background-color: #9dcb3b;
-            transition: 0.5s ease-in-out; }
+            transition: 0.5s ease-in-out ease-in-out; }
           #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box .hamburger-inner {
             background-color: #45b2e6;
-            transition: 0.5s ease-in-out; }
+            transition: 0.5s ease-in-out ease-in-out; }
           #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box .hamburger-inner::after {
             background-color: #895fa6;
-            transition: 0.5s ease-in-out; }
+            transition: 0.5s ease-in-out ease-in-out; }
         #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box:hover .hamburger-inner::before {
           background-color: #dc2824;
-          transition: 0.5s linear;
+          transition: 0.5s ease-in-out linear;
           text-shadow: 2px 2px 20px #fff; }
         #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box:hover .hamburger-inner {
           background-color: #f57e20;
-          transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out ease-in-out;
           text-shadow: 2px 2px 20px #fff; }
         #shopify-section-header .logo-header .menu-button .hamburger .hamburger-box:hover .hamburger-inner::after {
           background-color: #ffba00;
-          transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out ease-in-out;
           text-shadow: 2px 2px 20px #fff; }
       #shopify-section-header .logo-header .menu-button .hamburger.is-active .hamburger-inner, #shopify-section-header .logo-header .menu-button .hamburger.is-active .hamburger-inner::before, #shopify-section-header .logo-header .menu-button .hamburger.is-active .hamburger-inner::after {
         background-color: #45b2e6;
-        transition: 0.5s ease-in-out; }
+        transition: 0.5s ease-in-out ease-in-out; }
 
 /* ------------- TOGGLE MENU ------------- */
 .menu {
+  display: none;
+  z-index: 0;
+  height: 100%; }
+  .menu #navbarSupportedContent {
+    height: 100%; }
+
+.menu.openSesame {
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
-  bottom: 60px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  left: 0;
+  bottom: 0;
   font-size: 3em;
   background-image: repeating-radial-gradient(#dc2824, #f57e20, #ffba00, #9dcb3b, #45b2e6, #895fa6);
   padding: 12px;
   color: #000;
-  display: none;
-  top: 100px;
-  z-index: 100;
-  width: 100%;
-  transition: 0.5s; }
-  .menu #navbarSupportedContent {
-    height: 100%; }
-
-.openSesame {
-  display: flex;
-  position: fixed;
-  left: 0; }
+  top: 100px; }
 
 .nav-item {
   width: 100%; }
@@ -195,68 +199,100 @@ a:hover {
     display: flex;
     flex-direction: row;
     text-transform: uppercase;
-    padding: .5rem 0; }
+    padding: 0;
+    margin: calc(12px / 2);
+    margin-left: 12px;
+    transition: 0.5s ease-in-out all; }
     .nav-item .nav-link p {
       font-family: 'Blackletter';
-      transition: linear all 0.5s;
-      font-size: 40px;
+      transition: 0.5s ease-in-out all;
+      font-size: 30px;
       color: #000;
       padding: 0; }
-    .nav-item .nav-link p:hover {
-      color: #fff;
-      text-shadow: 6px -8px #000;
-      transition: linear all 0.5s; }
+  .nav-item .nav-link:hover p {
+    color: #fff;
+    text-shadow: 6px -8px #000;
+    transition: 0.5s ease-in-out all; }
   .nav-item #highlight p {
     text-decoration: underline; }
 
-.dropdown-toggle::after {
-  color: #fff;
-  margin-top: 9px;
-  height: 10px; }
+.dropdown-nav {
+  top: 0;
+  opacity: 0;
+  height: 0;
+  position: relative;
+  transition: 0.5s ease-in-out all;
+  margin: 12px 0 12px calc(12px * 2); }
+  .dropdown-nav .dropdown-header,
+  .dropdown-nav .dropdown-link-list {
+    text-transform: uppercase;
+    padding: 0; }
+  .dropdown-nav .dropdown-header p {
+    font-weight: bold;
+    font-size: 16px; }
+  .dropdown-nav .dropdown-link-list {
+    list-style: none;
+    margin: calc(12px / 2) 0 calc(12px / 2) 12px; }
+    .dropdown-nav .dropdown-link-list li {
+      color: #000;
+      flex-direction: row;
+      margin-left: 12px; }
+      .dropdown-nav .dropdown-link-list li .fas {
+        font-size: 14px;
+        margin-right: 12px; }
+      .dropdown-nav .dropdown-link-list li a#highlight p {
+        text-decoration: none; }
+      .dropdown-nav .dropdown-link-list li a#highlight::after {
+        content: html('<i class="fas fa-space-shuttle"></i>'); }
 
-.dropdown-toggle:hover {
-  color: #ffba00; }
+.dropdown-nav.dropped {
+  opacity: 1;
+  min-height: 16vh;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s ease-in-out all; }
+
+.btn-group > .btn,
+.btn-group-vertical > .btn {
+  position: relative; }
+
+.dropdown-toggle::after {
+  display: none; }
+
+.dropdown-caret {
+  color: #fff;
+  transition: 0.5s ease-in-out all;
+  transform-origin: center;
+  margin-left: calc(12px * 2);
+  font-size: 38px;
+  text-shadow: none; }
+
+.dropdown-caret.rotated {
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 0.5s ease-in-out all;
+  text-shadow: none; }
 
 #menu-peace {
-  height: 100px;
-  width: 100px; }
+  height: 80px;
+  width: 80px; }
   #menu-peace #peace-star {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     bottom: 12px; }
 
 /* -----------------------------------------------------------------------------
                                SECTION: SHOP BODY
  ---------------------------------------------------------------------------- */
-#shopify-section-body {
-  display: flex;
+#shopify-body {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   overflow-y: scroll; }
 
 /* -----------------------------------------------------------------------------
-                                 PRODUCT CATEGORY
- ---------------------------------------------------------------------------- */
-.product-category {
-  padding: 12px; }
-  .product-category .product-category-title {
-    color: #000;
-    font-size: 20px; }
-
-/* -----------------------------------------------------------------------------
-                                      HOMEPAGE
- ---------------------------------------------------------------------------- */
-#shopify-section-homepage-text {
-  display: flex;
-  flex-direction: column; }
-
-.homepage-division {
-  flex-wrap: wrap; }
-
-/* -----------------------------------------------------------------------------
-                                 HOMEPAGE CAROUSEL
+                                  CAROUSEL
  ---------------------------------------------------------------------------- */
 #shopify-section-homepage-viewer {
   padding: 0; }
@@ -309,7 +345,7 @@ a:hover {
     #shopify-section-homepage-viewer .homepage-viewer .carousel-control-prev:focus,
     #shopify-section-homepage-viewer .homepage-viewer .carousel-control-prev:hover {
       opacity: 1;
-      transition: 0.5s all; }
+      transition: 0.5s ease-in-out all; }
       #shopify-section-homepage-viewer .homepage-viewer .carousel-control-next:focus p,
       #shopify-section-homepage-viewer .homepage-viewer .carousel-control-next:hover p,
       #shopify-section-homepage-viewer .homepage-viewer .carousel-control-prev:focus p,
@@ -318,24 +354,20 @@ a:hover {
     #shopify-section-homepage-viewer .homepage-viewer .carousel-control-next,
     #shopify-section-homepage-viewer .homepage-viewer .carousel-control-prev {
       opacity: 1;
-      transition: 0.5s all; }
+      transition: 0.5s ease-in-out all; }
       #shopify-section-homepage-viewer .homepage-viewer .carousel-control-next p,
       #shopify-section-homepage-viewer .homepage-viewer .carousel-control-prev p {
-        font-size: 20px;
-        font-weight: bold;
-        color: #000;
-        margin-bottom: 0; }
+        font-weight: bold; }
 
 /* -----------------------------------------------------------------------------
                                   NEWS SECTION
  ---------------------------------------------------------------------------- */
 #shopify-section-news {
+  flex-direction: column;
+  align-items: flex-start;
   border-bottom: 2px solid #000; }
-  #shopify-section-news .news {
-    flex-direction: column;
-    align-items: flex-start; }
-    #shopify-section-news .news .news-text {
-      margin-bottom: 12px; }
+  #shopify-section-news .news-text {
+    margin-bottom: 12px; }
 
 /* -----------------------------------------------------------------------------
                                  HOMEPAGE PRODUCTS
@@ -347,23 +379,23 @@ a:hover {
   flex-direction: column; }
   #shopify-section-homepage-products .homepage-products-div .product-item {
     display: block;
-    margin-bottom: 12px;
-    transition: all 0.5s ease-in-out; }
-    #shopify-section-homepage-products .homepage-products-div .product-item .featured-product-img-link img {
-      padding: 1px 1px 0 0; }
+    margin-bottom: calc(12px * 3.5);
+    transition: all 0.5s ease-in-out ease-in-out; }
+    #shopify-section-homepage-products .homepage-products-div .product-item .product-thumb {
+      margin-bottom: calc(12px); }
     #shopify-section-homepage-products .homepage-products-div .product-item .featured-product-img-link img:hover {
       border-color: #ffba00; }
   #shopify-section-homepage-products .homepage-products-div .product-item:hover {
     box-shadow: 2px 2px 20px #fff;
-    transition: all 0.5s ease-in-out; }
+    transition: all 0.5s ease-in-out ease-in-out; }
   #shopify-section-homepage-products .homepage-products-div .product-content {
-    flex-direction: column; }
+    flex-direction: row; }
     #shopify-section-homepage-products .homepage-products-div .product-content .feat-text-div {
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      width: 100%; }
-      #shopify-section-homepage-products .homepage-products-div .product-content .feat-text-div .feat-product-title {
+      width: 60%; }
+      #shopify-section-homepage-products .homepage-products-div .product-content .feat-text-div .product-title {
         margin-right: auto;
         margin-bottom: 0;
         text-transform: uppercase; }
@@ -378,16 +410,16 @@ a:hover {
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      width: 100%; }
+      width: 40%; }
       #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li {
         justify-content: center;
-        margin: 0 0 0 calc(12px * 2);
+        margin: 0 0 0 calc(12px);
         border: 2px solid #000;
         border-radius: 20px;
         line-height: 38px;
-        width: 80px;
+        width: 38px;
         height: 38px;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out ease-in-out;
         color: #000; }
         #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li p, #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li i, #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li a {
           text-align: center;
@@ -395,7 +427,8 @@ a:hover {
           font-weight: bold; }
       #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li:hover {
         background-color: #f57e20;
-        transition: all 0.5s ease-in-out; }
+        transition: all 0.5s ease-in-out ease-in-out;
+        transform: scale(1.3, 1.3); }
         #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li:hover p, #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li:hover i, #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li:hover a {
           color: #000; }
       #shopify-section-homepage-products .homepage-products-div .product-content .product-buttons li:nth-child(2):hover {
@@ -421,12 +454,13 @@ a:hover {
     font-size: 20px; }
     #shopify-section-footer footer ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%; }
+      margin: 0 0 12px 0;
+      width: 100%;
+      padding: 0; }
     #shopify-section-footer footer .social-media {
       flex-direction: row;
-      justify-content: space-around; }
+      justify-content: space-around;
+      width: 30%; }
   #shopify-section-footer p {
     margin: 0; }
 
@@ -456,12 +490,28 @@ a:hover {
 @media (min-width: 600px) {
   .shopify-section {
     padding: 12px calc(12px * 3); }
-  #shopify-section-body {
-    flex-wrap: wrap;
+  #shopify-body {
     padding: calc(12px * 2);
-    overflow-y: hidden;
+    overflow-y: scroll;
     overflow-x: hidden;
     padding: 0; }
+  /* ---------------------------------------------------------------------------
+                                         HEADER
+   -------------------------------------------------------------------------- */
+  .menu {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    right: 0;
+    transition: 0.5s ease-in-out all;
+    transform: translateX(100vw); }
+  .menu.openSesame {
+    opacity: 1;
+    width: 275px;
+    height: 100%;
+    transition: 0.5s ease-in-out all;
+    transform: translateX(calc(100vw - 275px)); }
   #logo-link {
     transform: scale(1.75, 2.5) translate(47.5px, -7px); }
   /* ---------------------------------------------------------------------------
@@ -560,7 +610,7 @@ a:hover {
               border: 2px solid #000;
               border-radius: 20px;
               line-height: 38px;
-              width: 80px;
+              width: 38px;
               height: 38px;
               transition: all 0.5s ease-in-out; }
               #shopify-section-homepage-products .homepage-products-div .product-item .product-content .product-buttons li p, #shopify-section-homepage-products .homepage-products-div .product-item .product-content .product-buttons li i, #shopify-section-homepage-products .homepage-products-div .product-item .product-content .product-buttons li a {
@@ -570,7 +620,7 @@ a:hover {
                 color: #000; }
             #shopify-section-homepage-products .homepage-products-div .product-item .product-content .product-buttons li:hover {
               background-color: #f57e20;
-              transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out ease-in-out;
               color: #000; }
             #shopify-section-homepage-products .homepage-products-div .product-item .product-content .product-buttons li:nth-child(2):hover {
               background-color: #9dcb3b; }
@@ -582,7 +632,6 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     padding: calc(12px);
-    position: fixed;
     height: 60px; }
     #shopify-section-footer footer {
       flex-direction: row;

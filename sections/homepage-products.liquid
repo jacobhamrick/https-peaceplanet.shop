@@ -9,26 +9,25 @@
 
 
   <div class="homepage-products-div flex">
+
     {% for product in collection.products limit: section.settings.product_limit %}
 
     <div class="product-item">
-
       <div class="product-thumb">
 
         {% if product.compare_at_price and product.compare_at_price != product.price %}
-        <span class="bage">Sale</span>
+          <span class="bage">Sale</span>
         {% endif %}
+
         <a class="featured-product-img-link" href="{{product.url}}">
           <img class="img-responsive" src="{{product.featured_image.src | img_url: '1920x'}}">
         </a>
 
       </div>
 
-
+      <p class="product-title font-weight-bold"><a href="{{product.url}}">{{product.title}}</a></p>
       <div class="product-content flex">
-
         <div class="feat-text-div flex">
-          <p class="feat-product-title font-weight-bold"><a href="{{product.url}}">{{product.title}}</a></p>
           <p class="feat-product-description">{{product.description}}</p>
           {% unless product.available %}
             <p class="price font-weight-bold">Sold Out</p>
@@ -38,7 +37,7 @@
         </div>
 
         <ul class="product-buttons flex">
-          <li class="flex"><a class="featured-product-img-link" href="{{product.url}}">VIEW</a></li>
+          <li class="flex"><a class="featured-product-img-link" href="{{product.url}}"><i class="fas fa-eye"></i></a></li>
 
           <li class="flex">
             <form id="form-{{product.handle}}" method="post" action="/cart/add">
@@ -52,6 +51,8 @@
 
     </div> <!-- end product-item -->
     {% endfor %}
+
+
   </div>
 
 

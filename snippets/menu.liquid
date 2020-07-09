@@ -22,24 +22,31 @@
       {% endif %}
 
       {% if link.links != blank %}
-      <div class="nav-item dropdown position-relative">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% if link.current %}aria-current="page" id="highlight"{% endif %}>
-          <p>Shop</p>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <div class="row">
-            {% for childlink in link.links %}
-            <div class="col-4">
-              <div class="dropdown-header">{{childlink.title}}</div>
-              <div class="dropdown-divider"></div>
 
-               {% for sublink in childlink.links %}
-                <a href="{{sublink.url}}">{{sublink.title}}</a>
-              {% endfor %}
-            </div>
+      <div class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" {% if link.current %}aria-current="page" id="highlight"{% endif %}>
+          <p>Shop <i class="fas fa-caret-right dropdown-caret rotated"></i></p>
+        </a>
+
+        <div class="dropdown-nav dropped">
+
+            {% for childlink in link.links %}
+
+              <div class="dropdown-header"><p>{{childlink.title}}</p></div>
+
+                  {% for sublink in childlink.links %}
+                  <ul class="dropdown-link-list">
+                    <li class="flex">
+                      <a href="{{sublink.url}}" {% if sublink.current %}aria-current="page" id="highlight"{% endif %}><p>{{sublink.title}}</p></a>
+                    </li>
+                  {% endfor %}
+                </ul>
+
             {% endfor %}
-          </div>
+
         </div>
+
       </div>
 
       {% endif %}

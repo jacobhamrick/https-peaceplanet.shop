@@ -1,24 +1,10 @@
-<div class="news flex">
-
 <p class="title font-weight-bold">{{ section.settings.news_title }} <i class="fas fa-globe"></i></p>
+{% for block in section.blocks %}
+  <p class="news-date font-weight-bold">{{ block.settings.news_date}}</p>
+  <p class="news-text">{{ block.settings.news_text }}</p>
+{% endfor %}
 
-  {% for block in section.blocks %}
-
-    <p class="news-date font-weight-bold">{{ block.settings.news_date}}</p>
-
-    <p class="news-text">{{ block.settings.news_text }}</p>
-
-  {% endfor %}
-
-  {% include 'mailinglist' %}
-
-
-</div>
-
-
-
-
-
+{% include 'mailinglist' %}
 
 {% schema %}
 
